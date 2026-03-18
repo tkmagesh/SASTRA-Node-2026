@@ -1,5 +1,7 @@
 # Node.js
 
+(youtube playlist - https://bit.ly/node-videos)
+
 - JavaScript runtime
 - Single Threaded Event Loop
     - Your application is executed using ONLY ONE thread
