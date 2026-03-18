@@ -26,12 +26,17 @@ app.post("/products", (req, res) => {
   res.status(201).json(newProduct)
 });
 
-app.put("/products", (req, res) => {
-  res.send("The given product will be updated");
+app.put("/products/:id", (req, res) => {
+  const pId = parseInt(req.params.id)
+  const updatedProduct = req.body
+  products = products.map(p => p.id === pId ? updatedProduct : p)
+  res.status(200).json(updatedProduct)
 });
 
-app.delete("/products", (req, res) => {
-  res.send("The given product will be deleted");
+app.delete("/products/:id", (req, res) => {
+    const pId = parseInt(req.params.id);
+    products = products.filter(p => p.id !== pId)
+    res.status(200).json({})
 }); 
 
 
