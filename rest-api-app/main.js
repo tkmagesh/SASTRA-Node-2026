@@ -2,20 +2,31 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get("/", (req, res) => {
-  res.send("GET req made for '/' ");
+// in-memory data
+let products = [
+  { id: 101, name: "Pen", cost: 10 },
+  { id: 102, name: "Pencil", cost: 5 },
+  { id: 103, name: "Marker", cost: 50 },
+];
+
+app.use(express.json()) // for parsing application/json
+
+app.get("/products", (req, res) => {
+  res.json(products);
 });
 
-app.post("/", (req, res) => {
-  res.send("POST req made for '/' ");
+app.post("/products", (req, res) => {
+  let newProduct = req.body;
+  products.push(newProduct)
+  res.status(201).json(newProduct)
 });
 
-app.put("/", (req, res) => {
-  res.send("PUT req made for '/' ");
+app.put("/products", (req, res) => {
+  res.send("The given product will be updated");
 });
 
-app.delete("/", (req, res) => {
-  res.send("DELETE req made for '/' ");
+app.delete("/products", (req, res) => {
+  res.send("The given product will be deleted");
 }); 
 
 
