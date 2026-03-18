@@ -15,6 +15,11 @@ app.get("/products", (req, res) => {
   res.json(products);
 });
 
+/* POSTMAN (testing POST)
+    => method: POST
+    => raw, JSON 
+    => {"id" : 104, "name" : "Scribble Pad", "cost" : 25 }
+*/
 app.post("/products", (req, res) => {
   let newProduct = req.body;
   products.push(newProduct)
